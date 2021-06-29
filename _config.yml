@@ -21,7 +21,7 @@ paginate_path:    "/blog/page:num/"
 social:
   github: donald-pinckney
   twitter: donald_pinckney
-  email: 'dpinckney@cs.umass.edu'
+  email: 'donald_pinckney@icloud.com'
 
 # Gems
 gems:
