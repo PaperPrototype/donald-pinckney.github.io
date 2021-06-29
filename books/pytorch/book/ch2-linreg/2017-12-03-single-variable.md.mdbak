@@ -88,15 +88,15 @@
 <meta property="og:title" content="Single Variable Linear Regression" />
 <meta name="author" content="Donald Pinckney" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="1st year programming languages PhD student at UMass Amherst." />
-<meta property="og:description" content="1st year programming languages PhD student at UMass Amherst." />
+<meta name="description" content="PhD student researching programming languages at Northeastern University." />
+<meta property="og:description" content="PhD student researching programming languages at Northeastern University." />
 <link rel="canonical" href="https://donaldpinckney.com/books/pytorch/book/ch2-linreg/2017-12-03-single-variable.md.mdbak" />
 <meta property="og:url" content="https://donaldpinckney.com/books/pytorch/book/ch2-linreg/2017-12-03-single-variable.md.mdbak" />
 <meta property="og:site_name" content="Donald Pinckney" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2017-12-03T00:00:00-08:00" />
 <script type="application/ld+json">
-{"datePublished":"2017-12-03T00:00:00-08:00","dateModified":"2017-12-03T00:00:00-08:00","url":"https://donaldpinckney.com/books/pytorch/book/ch2-linreg/2017-12-03-single-variable.md.mdbak","mainEntityOfPage":{"@type":"WebPage","@id":"https://donaldpinckney.com/books/pytorch/book/ch2-linreg/2017-12-03-single-variable.md.mdbak"},"author":{"@type":"Person","name":"Donald Pinckney"},"description":"1st year programming languages PhD student at UMass Amherst.","@type":"BlogPosting","headline":"Single Variable Linear Regression","@context":"https://schema.org"}</script>
+{"datePublished":"2017-12-03T00:00:00-08:00","dateModified":"2017-12-03T00:00:00-08:00","url":"https://donaldpinckney.com/books/pytorch/book/ch2-linreg/2017-12-03-single-variable.md.mdbak","mainEntityOfPage":{"@type":"WebPage","@id":"https://donaldpinckney.com/books/pytorch/book/ch2-linreg/2017-12-03-single-variable.md.mdbak"},"author":{"@type":"Person","name":"Donald Pinckney"},"description":"PhD student researching programming languages at Northeastern University.","@type":"BlogPosting","headline":"Single Variable Linear Regression","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -112,7 +112,7 @@
           Donald Pinckney
         </a>
       </h1>
-      <p class="lead">1st year programming languages PhD student at UMass Amherst.</p>
+      <p class="lead">PhD student researching programming languages at Northeastern University.</p>
     </div>
 
     <nav class="sidebar-nav">
