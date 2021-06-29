@@ -1,31 +1,8 @@
 #!/bin/bash
 
-git clone https://github.com/donald-pinckney/donald-pinckney.github.io $TRAVIS_REPO_SLUG
-cd $TRAVIS_REPO_SLUG
-git checkout -qf $TRAVIS_COMMIT 
-
 # Make temporary dest dir, and clean up.
 dest=$(mktemp -d)
-binTemp=$(mktemp -d)
 trap "{ rm -rf $dest; rm -rf $binTemp; }" EXIT SIGINT SIGTERM
-
-
-# Setup all the ssh stuff
-# Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
-ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
-ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
-ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
-ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
-openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in travis_rsa.enc -out travis_rsa -d
-chmod 600 travis_rsa
-eval `ssh-agent -s`
-ssh-add travis_rsa
-
-
-# Save some useful information
-REPO=`git config remote.origin.url`
-SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
-SHA=`git rev-parse --verify HEAD`
 
 # Checkout src branch
 git checkout src
@@ -53,18 +30,8 @@ if [ ! -f index.html ]; then
     exit 1
 fi
 
-rm travis_rsa
- 
-# Set git info
-git config user.name "Travis CI"
-git config user.email "$COMMIT_AUTHOR_EMAIL"
 
 git add .
-git commit -m "Deploy to GitHub Pages: ${SHA}"
+git commit -m "Deploy to GitHub Pages"
 
-
-
-
-git push $SSH_REPO master
-cd ..
-exit
+git push master
