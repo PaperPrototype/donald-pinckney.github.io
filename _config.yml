@@ -2,8 +2,7 @@
 
 # Setup
 title:            Donald Pinckney
-tagline:          'Explorations in math and computer science.'
-description:      '1st year programming languages PhD student at UMass Amherst.'
+description:      'PhD student researching programming languages at Northeastern University.'
 url:              https://donaldpinckney.com
 baseurl:          ""
 timezone:         America/Los_Angeles
@@ -12,7 +11,6 @@ repo:             https://github.com/donald-pinckney/donald-pinckney.github.io
 author:
   name:           'Donald Pinckney'
   email:          donald_pinckney@icloud.com
-school_year:      '1st'
 
 paginate:         5
 paginate_path:    "/blog/page:num/"

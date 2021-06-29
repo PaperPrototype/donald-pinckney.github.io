@@ -51,29 +51,35 @@ img {
 
 <ol>
     <li>
-        <strong>Serverless Computing:</strong> My most recent (and first) research project at UMass Amherst 
-        <a href="https://plasma-umass.org">PLASMA lab</a> was to tackle some fundamental problems with serverless computing (e.g. AWS Lambda). 
-        Serverless functions are super exciting, but they pose some challenges with regards to concurrency and composability.
-        In particular, the underlying cloud platform (such as AWS Lambda) can perform quite complicated patterns of 
-        reusing and restarting of the containers inside which code is run.
-        This <em>should</em> be unnoticeable to programmers using the platform, but unfortunately may not be, 
-        especially when the serverless functions involve shared data storage. In our work we provide formal proofs specifying under what 
-        conditions the underlying mechanics of the serverless platform are indeed abstracted away from programmers. 
-        In addition, we improve the situation of composing serverless functions by providing a language based on 
-        <a href="http://www.cse.chalmers.se/~rjmh/afp-arrows.pdf" target="_blank">Arrows</a>, which can be used to specify pipelines of serverless functions.
-        A draft of the paper is <a href="{{site.baseurl}}/public/files/documents/foundations.pdf" target="_blank">available here</a>.
+        <strong>Delimited Continuations for WebAssembly (DLS 2020):</strong> 
+        WebAssembly (Wasm) is a rapidly growing compilation target for the web, but lacks
+        support for user-level or multiplexed threads, as seen in Go. Currently such "threads"
+        must be simulated, leading to a significant performance penalty for Go code compiled
+        to Wasm. We resolve this by adding support for <emph>delimited continuations</emph>
+        to WebAssembly, which allows for efficient expression of user-level threads, as well as
+        many other interesting computation effects.
+        This work was <a href="https://dl.acm.org/doi/10.1145/3426422.3426978" target="_blank">presented at DLS 2020</a>.
+    </li>
+    <li>
+        <strong>Serverless Computing (OOPSLA 2019):</strong> 
+        Serverless functions are super convenient, but the underlying cloud platforms (such as AWS Lambda) 
+        nondeterministically reuse or restart the containers inside of which code is run, leading to
+        bugs in real-world code. We investigate under what formal conditions 
+        serverless functions can be expected to behave deterministically.
+        This work was <a href="https://dl.acm.org/doi/10.1145/3360575" target="_blank">presented at OOPSLA 2019</a>, and received a distinguished paper award.
     </li>
 </ol>
 
 <h1 id="bio" class="clickable-header top-level-header">About Me</h1>
 
 <p>
-    Currently, I'm a {{ site.school_year }} year computer science PhD student at UMass Amherst, 
+    Currently, I'm a PhD student at Northeastern University, 
     where I study programming languages and software engineering. I'm advised by
-        <a href="https://people.cs.umass.edu/~arjun/home/" target="_blank">Arjun Guha</a> and
-        <a href="https://people.cs.umass.edu/~brun/" target="_blank">Yuriy Brun</a>, and I'm a member of the 
-        <a href="https://plasma-umass.org" target="_blank">PLASMA</a> and 
-        <a href="http://laser.cs.umass.edu" target="_blank">LASER</a> labs. 
+        <a href="https://ccs.neu.edu/~arjunguha/main/home/" target="_blank">Arjun Guha</a> and I'm a member of the
+        <a href="https://prl.ccs.neu.edu" target="_blank">Programming Research Laboratory</a>.
+        Previously I was a PhD student at UMass Amherst, where I was additionally advised by
+        <a href="https://people.cs.umass.edu/~brun/" target="_blank">Yuriy Brun</a>, and a member of the 
+        <a href="https://plasma-umass.org" target="_blank">PLASMA</a> lab. 
 </p>
 
 <p>
@@ -94,17 +100,7 @@ img {
 <p>
     In addition to programming languages research, I like to somewhat regularly write <a href="{{site.baseurl}}/blog/">blog posts</a> about various topics, and I enjoy dabbling in machine learning, as well as abstract algebra and topology on the pure math side. 
     Outside of academics I enjoy practicing martial arts (in particular Tai Chi, Wing Chun, and Taekwondo), playing music, and archery.
-    I also love to travel with my amazing fiancée 
+    I also love to travel with my amazing wife 
     <a href="https://www.linkedin.com/in/jingwen-lin-b0b1ba152/" target="_blank">Jingwen Lin</a> 
     (a masters student in Food Science at UMass) to see awesome sights. 
-    Recently, we travelled all over China, seeing all sorts of both historic and scenic views, such as 玉龙雪山 
-    (<a href="https://en.wikipedia.org/wiki/Jade_Dragon_Snow_Mountain" target="_blank">Jade Dragon Snow Mountain</a>) pictured at right.
-    <!-- I would like to thank her and my mother Jane, who have and continue to support me to be the best I can be, and make my life truly wonderful -->
 </p>
-
-
-
-
-<!-- <p>
-Feel free to check out my work on [GitHub](https://github.com/{{ site.social.github}}), and connect with me on [Twitter](https://twitter.com/{{ site.social.twitter}}).
-</p> -->
