@@ -96,7 +96,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-03-21T00:00:00-07:00" />
 <script type="application/ld+json">
-{"headline":"Multi Variable Linear Regression","dateModified":"2018-03-21T00:00:00-07:00","datePublished":"2018-03-21T00:00:00-07:00","author":{"@type":"Person","name":"Donald Pinckney"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://donaldpinckney.com/books/tensorflow/src/ch2-linreg/2018-03-21-multi-variable.html"},"description":"1st year programming languages PhD student at UMass Amherst.","@type":"BlogPosting","url":"https://donaldpinckney.com/books/tensorflow/src/ch2-linreg/2018-03-21-multi-variable.html","@context":"https://schema.org"}</script>
+{"datePublished":"2018-03-21T00:00:00-07:00","dateModified":"2018-03-21T00:00:00-07:00","url":"https://donaldpinckney.com/books/tensorflow/src/ch2-linreg/2018-03-21-multi-variable.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://donaldpinckney.com/books/tensorflow/src/ch2-linreg/2018-03-21-multi-variable.html"},"author":{"@type":"Person","name":"Donald Pinckney"},"description":"1st year programming languages PhD student at UMass Amherst.","@type":"BlogPosting","headline":"Multi Variable Linear Regression","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -390,7 +390,7 @@
 
     <div class="sidebar-footnote">
       <p class="sidebar-footnote">
-        &copy; 2020 Donald Pinckney. All rights reserved.
+        &copy; 2021 Donald Pinckney. All rights reserved.
         <!-- <br />
         The views and opinions expressed here are my own, and do not reflect the views of Apple, Inc. -->
       </p>
@@ -448,9 +448,9 @@
 <p><link rel="stylesheet" href="/public/css/bootstrap.min.css"></p>
 
 <div class="alert alert-danger" role="alert">Warning: The TensorFlow tutorials are now deprecated and will not be updated. Please see <a href="/books/pytorch/book/ch2-linreg/2018-03-21-multi-variable.html">the corresponding PyTorch tutorials.</a></div>
-<h1 id="multi-variable-regression-3">Multi Variable Regression</h1>
+<h1 id="multi-variable-regression-4">Multi Variable Regression</h1>
 <p>In <a href="/books/tensorflow/book/ch2-linreg/2017-12-03-single-variable.html">chapter 2.1</a> we learned the basics of TensorFlow by creating a single variable linear regression model. In this chapter we expand this model to handle multiple variables. Note that less time will be spent explaining the basics of TensorFlow: only new concepts will be explained, so feel free to refer to previous chapters as needed.</p>
-<h2 id="motivation-6">Motivation</h2>
+<h2 id="motivation-7">Motivation</h2>
 <p>Recall that a single variable linear regression model can learn to predict an output variable \(y\) under these conditions:</p>
 
 <ol>
@@ -525,9 +525,9 @@
 <p>One approach to handling multiple variables would be to reduce the number of input variables to only 1 variable, and then training a single variable linear regression model using that. In fact, an important area of research in machine learning (and one that will be covered later) called <strong><a href="https://en.wikipedia.org/wiki/dimensionality_reduction">dimensionality reduction</a></strong> deals with this problem of reducing the number of variables. However, it&#39;s important to realize that the number of variables can only be reduced so far, and its extremely rare that you can reduce a data set to only 1 variable. For now you need to take this statement on faith, but in later chapters we will investigate it more thoroughly.</p>
 
 <p>So, it seems that we will have to deal with training models that can handle multiple variables. In this chapter we learn how to allow multiple input variables in our linear regression model. Such a model is called multi variable linear regression, or just linear regression.</p>
-<h2 id="theory-6">Theory</h2>
+<h2 id="theory-7">Theory</h2>
 <p>Most of the theory is similar to the theory for single variable linear regression, but we will need to augment and generalize it to handle multiple variables.</p>
-<h3 id="data-set-format-6">Data set format</h3>
+<h3 id="data-set-format-7">Data set format</h3>
 <p>Previously we defined our data set \(D\) as consisting of many example pairs of \(x\) and \(y\), where \(m\) is the number of examples:
 \[
     D = \{ (x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), \cdots, (x^{(m)}, y^{(m))} \}
@@ -581,7 +581,7 @@ Note that the notation \(x^{(i)}_j\) denotes the \(j\)&#39;th input variable in 
         \end{bmatrix}
 \]
 So, each column of \(D_x\) represents a single input data example. We don&#39;t need to change the 1 x \(m\) vector \(D_y\), since we still only have 1 output variable.</p>
-<h3 id="model-concept-6">Model concept</h3>
+<h3 id="model-concept-7">Model concept</h3>
 <p>So, we now have an input data matrix \(D_x\) with each column vector representing a single input data example, and we have the corresponding \(D_y\) row vector, each entry of which is an output data example. How do we define a model which can linearly estimate the output \(y&#39;^{(i)}\) given the input data vector \(x^{(i)}\)? Let&#39;s build it up from simple concepts, and build towards more complex linear algebra.</p>
 
 <p>Since we want \(y&#39;^{(i)}\) to depend linearly on each \(x^{(i)}_j\) for \(1 \leq j \leq n\), we can write:
@@ -633,13 +633,13 @@ So, each column of \(D_x\) represents a single input data example. We don&#39;t 
 <p>To minimize the loss function, we use the same process as before, gradient descent. However, previously the gradient descent was altering 2 variables (\(a\) and \(b\)) so as to minimize the loss function, and so we could plot the loss function and gradient descent progress in terms of \(a\) and \(b\). However, now the optimization needs to alter many more variables, since \(A\) actually contains \(n\) variables, the gradient descent must be performed in \(n+1\) dimensional space, and we don&#39;t have an easy way to visualize this.</p>
 
 <p>With the more general linear algebra formulation of linear regression under our belts, let&#39;s move on to actually coding stuff.</p>
-<h2 id="implementation-6">Implementation</h2>
+<h2 id="implementation-7">Implementation</h2>
 <p>As before, we need to: import data, define the model, define the loss function, run gradient descent, and finally make predictions. Many steps will be similar to the single variable case, but for completeness I will walk through them briefly.</p>
 
 <p>For building and testing the implementation we will use a synthetic data set consisting of \(n=2\) input variables. You can download <a href="/books/tensorflow/book/ch2-linreg/code/linreg-multi-synthetic-2.csv">the synthetic data set here</a>. By synthetic, I mean that I purposefully created a very nicely behaved data set so that we can practice implementing multi variable linear regression, and verify that we converged to the right answer. In fact, the synthetic data is generated as \(y = 2x_1 + 1.3x_2 + 4 + \varepsilon \) where \(\varepsilon\) is random noise. If we implement multi variable linear regression correctly, then we should obtain approximately \(A = \begin{bmatrix} 2, 1.3 \end{bmatrix}, b = 4\). This plot illustrates what the data looks like in 3 dimensions, essentially a plane in 3 dimensions with some random fluctuations:</p>
 
 <p><img src="/books/tensorflow/book/ch2-linreg/assets/linreg-multi-synthetic-2.png" alt="scatter"></p>
-<h3 id="importing-the-data-6">Importing the data</h3>
+<h3 id="importing-the-data-7">Importing the data</h3>
 <p>As explained above, the input data set can be organized as an \(n \times m\) matrix. Since we will load the entire data set (input and output) from a single CSV file, and we have 2 input variables, the CSV file will contain 3 columns: the first 2 are the input variables, and the last one is the output variable. So, first we load the CSV file into an \(m\) x 3 matrix, and then separate the first 2 columns from the last:</p>
 <div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
@@ -677,7 +677,7 @@ So, <code>D[:, 0:2]</code> means to read the values in <code>D</code> at all row
 <p>So, <code>D[:, 0:2].transpose()</code> is a matrix of shape \(n \times m\), and is our correct data input matrix \(D_x\). We save this matrix to the variable <code>X_data</code>. Likewise, we also transpose <code>D[:, 2]</code> to correctly compute \(D_y\), and save it in <code>y_data</code>.</p>
 
 <p>At this point we have our \(m \times n\) input data matrix <code>X_data</code> and our \(m \times 1\) output vector <code>y_data</code> loaded. In addition, we conveniently have the number of columns stored in <code>n</code>, so now we can start defining our model.</p>
-<h3 id="defining-the-model-10">Defining the model</h3>
+<h3 id="defining-the-model-11">Defining the model</h3>
 <p>As shown above, we want our model parameters to consist of a matrix \(A\) of size \(1 \times n\) and a single number \(b\). Then, we define:
 \[
     y&#39;(x, A, b) = Ax + b
@@ -698,7 +698,7 @@ So, <code>D[:, 0:2]</code> means to read the values in <code>D</code> at all row
 
 <span class="c1"># Define the loss function
 </span><span class="n">L</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">((</span><span class="n">y_predicted</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><h3 id="training-the-model-2">Training the model</h3>
+</code></pre></div><h3 id="training-the-model-3">Training the model</h3>
 <p>At this point, we have a 1 dimensional output <code>y_predicted</code> which we compare against <code>y</code> using <code>L</code> to train the model, which is exactly the same situation as single variable linear regression. The remaining code to train the model is extremely similar, so I&#39;ll simply display it here, and then explain the few differences:</p>
 <div class="highlight"><pre class="highlight python"><code><span class="c1"># Define optimizer object
 </span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
@@ -736,9 +736,9 @@ t = 1999, loss = 1.44798e+06, A = [[ 2.00547647  1.3020972 ]], b = 3.95038
     \end{bmatrix}, b \approx 4\), primarily because some random noise was added to each point in the data set.</p>
 
 <p>The model is fully trained, so now given a new input \(x\) we could now predict the output \(y&#39; = Ax + b\), using all the learned information from all input variables.</p>
-<h1 id="concluding-remarks-13">Concluding Remarks</h1>
+<h1 id="concluding-remarks-14">Concluding Remarks</h1>
 <p>Linear regression with multiple variables is only slightly different in essence from single variable linear regression. The main difference is abstracting the linear operation \(ax\) where \(a\) and \(x\) are single numbers to the linear operation \(Ax\), where now \(A\) is a matrix, \(x\) is a vector. In addition, at the implementation level we also have to deal with loading data in a more sophisticated manner, but otherwise the code is mostly the same. In later chapters we will use this abstraction we have built to define even more powerful models.</p>
-<h1 id="challenge-problems-12">Challenge Problems</h1>
+<h1 id="challenge-problems-13">Challenge Problems</h1>
 <p>So far this chapter has used a synthetic data set, <code>linreg-multi-synthetic-2.csv</code>, for easy demonstration. The exercises are primarily concerned with getting practice at applying this model to real-world data. Note that in real-world data not all columns are useful, and some might not have a linear relationship with the MPG. Including these unhelpful columns in your model might decrease the accuracy of your model. You should try plotting various columns vs. the output column to determine which seem most helpful in predicting the output, and then only include these useful columns as your input.</p>
 
 <p>In addition, many data sets will have so called <em>messy data</em>, which require you to do some manipulation in Python to make sure the data is imported cleanly and properly. For example, some rows might containg missing data: for these your code can not crash or incorrectly import the data. Instead, you need to adopt a strategy to still import the data as best as you can: for example, you can simply ignore any rows that have incomplete data.</p>
@@ -750,7 +750,7 @@ t = 1999, loss = 1.44798e+06, A = [[ 2.00547647  1.3020972 ]], b = 3.95038
 <li>Download <a href="https://archive.ics.uci.edu/ml/datasets/Auto+MPG">this car MPG data set</a>, and try to predict the MPG (first column) based on some of the other columns.</li>
 <li>Download <a href="https://www.kaggle.com/camnugent/california-housing-prices">this California 1990 Housing Value data set</a>, and try to predict the house values based on various factors.</li>
 </ol>
-<h1 id="complete-code-13">Complete Code</h1>
+<h1 id="complete-code-14">Complete Code</h1>
 <p>The <a href="https://github.com/donald-pinckney/donald-pinckney.github.io/blob/src/books/tensorflow/src/ch2-linreg/code/multi_var_reg.py">complete example code is available on GitHub</a>, as well as directly here:</p>
 <div class="highlight"><pre class="highlight python"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
